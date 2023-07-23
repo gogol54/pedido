@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react'
 import styled from 'styled-components'
 
 const Btn = styled.button`
@@ -21,34 +21,73 @@ const Btn1 = styled.button`
     margin-left:0;
     transition:2s;
   }
+`  
+const Video = styled.video`
+  max-width: 80%:
+  height: 50vw;
+  @media (max-width:300px) and (min-width:600px) {
+    width: 350px;
+    height: 500px;
+    max-width: 80%;
+  }
 `
-
 function App() {
   const [control, setControl] = useState(false)
   const [verify, setVerify] = useState(false)
+  const [next, setNext] = useState(null)
+
   function pressedOk() {
     setControl(!control)
   }
   function handlePressed() {
     setVerify(true)
   }
-  return (
-    <div className="App">
-      <div className="container container-fluid" style={{margin: 'auto'}}>
+  return (<>
+    {
+      next == null ? 
+      <div className="container container-fluid"
+        style={{
+          backgroundColor: 'white',
+          borderRadius: '20px',
+          border: '20px solid gray'
+        }}
+      > 
         <center>
-          <img 
-            width=""
-            src="https://3.bp.blogspot.com/-VvAuDDzpaAQ/W-uKsij5pDI/AAAAAAABcb0/q82SeULs_1Eczn59vS2ibBEgz7IQWfdaACLcBGAs/s1600/love%2Bamor%2Bgif%2B%252810%2529.gif" 
-            alt="corações caindo do céu para Luisa Sonza"
-          />
+        <img 
+          src='https://www.dhresource.com/0x0/f2/albu/g12/M01/F6/FD/rBVakV9GQDaAde7rAADQz645pp0090.jpg'
+          width='100%'
+          height='auto'
+        />
+        </center>
+        <button 
+          style={{
+            float: 'right', 
+            position: 'relative',
+            top: '-40px'
+          }}
+          className='btn btn-success' 
+          onClick={() => setNext(true)}
+        >Abrir Cartão</button>
+      </div>
+      :
+      <>
+      <div className="App" style={{margin: '20px'}}>
+      <div className="container container-fluid">
+        <center>
+          <Video controls loop autoplay id='vid'>
+            <source 
+              src='https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-82750.appspot.com/o/WhatsApp%20Video%202023-07-23%20at%2014.53.00.mp4?alt=media&token=1b104b80-1d7a-49d0-bd0f-bf1e6694a66a' 
+              type="video/mp4"
+            />
+          </Video>
           <h3  
             style={{
               fontFamily:'Franklin Gothic Medium',
-              color: '#dadada',
-              marginTop: '40px',
+              color: '#2b2b2b',
+              marginTop: '0px',
               fontSize: '24px'
             }}
-          >Luísa Gerloff Sonza,<br /><p style={{fontSize: '20px'}}>Quer namorar comigo?</p></h3>
+          >Ana Paula Albeche,<br /><p style={{fontSize: '20px'}}>Quer namorar comigo?</p></h3>
           <Btn1 className="btn btn-success" onClick={() => pressedOk()}>Sim</Btn1>
           {
             verify ?
@@ -76,10 +115,11 @@ function App() {
           }
           >Sim, só que em vermelho</button>
           {
-            control != false ?
+            control !== false ?
             <>
             <p 
             style={{
+              maxWidth: '70%',
               color: '#dadada',
               fontFamily: 'Franklin Gothic Medium',
               fontSize: '18px',
@@ -88,8 +128,11 @@ function App() {
                 marginTop: '30px'
               }}
             id="message"
-            >OK, me chama quando vier para o RS (55)98118-0042 😘
-              
+            >Considerando esta como única e melhor escolha, 
+            saiba que te amo demais e espero que nossos dias sejam mais felizes à partir de hoje 😘...
+            caso contrário, me responda pessoalmente suas razões de não querer rotular 
+            nosso relacionamento para um namoro formalizado, ainda assim terá que viver sabendo que eu te amo :)~.
+            Afinal, é sempre amor mesmo que mude.   
             </p>
             <p 
               style={{
@@ -100,17 +143,20 @@ function App() {
                 marginTop: '30px'
               }}
             id="me2"
-            >Pode confiar, eu não tenho medo da macumba do Whinderson! 😂😂😂
-            </p>
+            >
+            </p> 
             </>
             :
             null
           }
-          
         </center>
       </div>
     </div>
-  );
+      </>
+    }
+  </>
+    
+  )
 }
 
 export default App;
