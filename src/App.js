@@ -151,6 +151,11 @@ function App() {
             null
           }
         </center>
+        <img 
+          src='https://i.pinimg.com/originals/7d/77/85/7d7785b423d0303a0bf5b2a45ef96e63.gif'
+          width='80px'
+          height='100px'
+        />
       </div>
     </div>
       </>
