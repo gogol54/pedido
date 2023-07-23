@@ -47,6 +47,7 @@ function App() {
       next == null ? 
       <div className="container container-fluid"
         style={{
+          marginTop: '20px',
           backgroundColor: 'white',
           borderRadius: '20px',
           border: '20px solid gray'
